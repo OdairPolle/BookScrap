@@ -1,8 +1,9 @@
 from time import sleep as zz
-#
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+from openpyxl import to_excel
 
 
 servise = Service()
@@ -44,3 +45,8 @@ for titulo in elementostitulos:
     zz(1)
 
 print(listaestoque)
+
+data = {'Titulo': listatitulos, 'Estoque': listaestoque}
+print(pd.DataFrame(data))
+dados = pd.DataFrame(data)
+dados.to_excel('daos.xlsx')
